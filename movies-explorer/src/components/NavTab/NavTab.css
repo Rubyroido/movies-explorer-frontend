@@ -1,0 +1,30 @@
+.navtab {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0 auto 30px;
+  padding: 0;
+}
+
+.navtab__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.navtab__link {
+  display: block;
+  background-color: #303030;
+  margin: 0;
+  padding-top: 10px;
+  box-sizing: border-box;
+  width: 96px;
+  height: 36px;
+  border-radius: 10px;
+  align-self: center;
+}
