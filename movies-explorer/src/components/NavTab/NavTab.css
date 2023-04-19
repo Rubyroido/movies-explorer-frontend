@@ -28,3 +28,8 @@
   border-radius: 10px;
   align-self: center;
 }
+
+.navtab__link:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
