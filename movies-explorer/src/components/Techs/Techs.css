@@ -1,0 +1,82 @@
+.techs {
+  width: 100%;
+  background-color: #272727;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.techs__container {
+  max-width: 1140px;
+  width: 100vw;
+  margin: 100px auto;
+  padding: 0;
+}
+
+.techs__title {
+  width: 100%;
+  height: 51px;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #DADADA;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.04em;
+  text-align: start;
+}
+
+.techs__text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  width: 600px;
+  font-weight: 400;
+  margin: 90px auto 100px;
+}
+
+.techs__subtitle {
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: 0.04em;
+  margin: 0;
+  padding: 0;
+}
+
+.techs__text {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  margin: 0;
+  padding: 0;
+}
+
+.techs__list {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: fit-content;
+}
+
+.techs__list-item {
+  background-color: #303030;
+  display: block;
+  width: 90px;
+  height: 60px;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.04em;
+  padding: 21px 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.techs__list-item:hover {
+  opacity: 0.8;
+}
