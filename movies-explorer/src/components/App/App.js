@@ -5,6 +5,8 @@ import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import Login from '../Login/Login';
+import Register from  '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 
 function App() {
@@ -19,27 +21,27 @@ function App() {
           </>
         } />
 
-        <Route path="/movies" element={
+        <Route path="movies" element={
           <>
             <Header />
           </>
         } />
 
-        <Route path="/saved-movies" element={
+        <Route path="saved-movies" element={
           <>
             <Header />
           </>
         } />
 
-        <Route path="/profile" element={
+        <Route path="profile" element={
           <>
             <Header />
           </>
         } />
 
-        {/* <Route path="/signin" element={ } /> */}
+        <Route path="/signin" element={ <Login /> } />
 
-        {/* <Route path="/signup" element={ } />  */}
+        <Route path="/signup" element={ <Register /> } />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

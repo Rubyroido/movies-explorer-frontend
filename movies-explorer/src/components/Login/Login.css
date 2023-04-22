@@ -1,0 +1,33 @@
+.login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 70px 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.login__text {
+  margin: 0;
+  padding: 0;
+  color: #8B8B8B;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.login__link {
+  margin: 0;
+  padding: 0;
+  color: #4285F4;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+}
+
+.login__link:hover {
+  opacity: 0.8;
+}
