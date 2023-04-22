@@ -5,6 +5,7 @@ import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
   return (
@@ -36,9 +37,11 @@ function App() {
           </>
         } />
 
-        {/* <Route path="/signin" element={ } />
+        {/* <Route path="/signin" element={ } /> */}
 
-        <Route path="/signup" element={ } /> */}
+        {/* <Route path="/signup" element={ } />  */}
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </page>
   );
