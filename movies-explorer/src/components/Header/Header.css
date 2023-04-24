@@ -13,6 +13,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-image: url(../../images/logo.svg);
   width: 38px;
   height: 38px;
+}
+
+.header__logo:hover {
+  opacity: 0.8;
 }

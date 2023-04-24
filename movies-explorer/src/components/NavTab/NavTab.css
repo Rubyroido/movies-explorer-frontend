@@ -1,4 +1,4 @@
-.navtab {
+.nav-tab {
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-.navtab__list {
+.nav-tab__list {
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -17,7 +17,7 @@
   margin: 0;
 }
 
-.navtab__link {
+.nav-tab__link {
   display: block;
   background-color: #303030;
   margin: 0;
@@ -27,9 +27,11 @@
   height: 36px;
   border-radius: 10px;
   align-self: center;
+  color: white;
+  text-decoration: none;
 }
 
-.navtab__link:hover {
+.nav-tab__link:hover {
   opacity: 0.8;
   cursor: pointer;
 }

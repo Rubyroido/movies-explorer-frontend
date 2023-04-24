@@ -7,21 +7,24 @@ function Portfolio() {
       <ul className="portfolio__projects">
         <li className="portfolio__project">
           <a href="https://rubyroido.github.io/how-to-learn/"
-          target="_blank" className="portfolio__project-name" rel="noreferrer">
-            Статичный сайт</a>
-          <div className="portfolio__project-link" />
+            target="_blank" className="portfolio__project-name" rel="noreferrer">
+            Статичный сайт
+            <div className="portfolio__project-link" />
+          </a>
         </li>
         <li className="portfolio__project">
           <a href="https://rubyroido.github.io/russian-travel/"
-          target="_blank" className="portfolio__project-name" rel="noreferrer">
-            Адаптивный сайт</a>
-          <div className="portfolio__project-link" />
+            target="_blank" className="portfolio__project-name" rel="noreferrer">
+            Адаптивный сайт
+            <div className="portfolio__project-link" />
+          </a>
         </li>
         <li className="portfolio__project">
           <a href="https://rubyroido.mesto.nomoredomains.icu"
-          target="_blank" className="portfolio__project-name" rel="noreferrer">
-            Одностраничное приложение</a>
-          <div className="portfolio__project-link" />
+            target="_blank" className="portfolio__project-name" rel="noreferrer">
+            Одностраничное приложение
+            <div className="portfolio__project-link" />
+          </a>
         </li>
       </ul>
     </section>

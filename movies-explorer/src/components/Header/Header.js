@@ -1,11 +1,11 @@
 import './Header.css';
-import logo from '../../images/logo.svg'
+import { Link } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 
 function Header() {
   return (
     <header className="header">
-      <img src={logo} alt="логотип" className="header__logo"/>
+      <Link to={'/'} className="header__logo"/>
       <Navigation />
     </header>
   )

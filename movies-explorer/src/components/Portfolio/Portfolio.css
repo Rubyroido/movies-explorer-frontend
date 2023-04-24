@@ -41,12 +41,15 @@
 }
 
 .portfolio__project-name {
+  width: 100%;
   font-weight: 400;
   font-size: 30px;
   line-height: 50px;
   letter-spacing: -0.04em;
   text-decoration: none;
   color: white;
+  display: flex;
+  justify-content: space-between;
 }
 
 .portfolio__project-link {
