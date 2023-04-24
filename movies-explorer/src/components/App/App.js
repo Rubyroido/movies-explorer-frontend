@@ -7,6 +7,7 @@ import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
 import Register from  '../Register/Register';
+import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 
 function App() {
@@ -36,12 +37,13 @@ function App() {
         <Route path="profile" element={
           <>
             <Header />
+            <Profile />
           </>
         } />
 
-        <Route path="/signin" element={ <Login /> } />
+        <Route path="signin" element={ <Login /> } />
 
-        <Route path="/signup" element={ <Register /> } />
+        <Route path="signup" element={ <Register /> } />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
