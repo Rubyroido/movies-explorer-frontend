@@ -13,7 +13,7 @@ function Profile() {
   const [buttonExitState, setButtonExitState] = React.useState('');
   const [inputState, setInputState] = React.useState('disabled')
 
-  function editButtonHandle(event) {
+  function handleEditButton(event) {
     event.preventDefault()
     setButtonEditState('profile__button_disabled');
     setButtonSaveState('');
@@ -21,7 +21,7 @@ function Profile() {
     setInputState('');
   }
 
-  function saveButtonHandle(event) {
+  function handleSaveButton(event) {
     event.preventDefault()
     setButtonEditState('');
     setButtonSaveState('profile__button_disabled');
@@ -43,8 +43,8 @@ function Profile() {
             <input type='text' defaultValue={testUser.email} className='profile__input' disabled={inputState} />
           </label>
         </div>
-        <button onClick={editButtonHandle} className={`profile__button-edit ${buttonEditState}`}>Редактировать</button>
-        <button onClick={saveButtonHandle} className={`profile__button-save ${buttonSaveState}`}>Сохранить</button>
+        <button onClick={handleEditButton} className={`profile__button-edit ${buttonEditState}`}>Редактировать</button>
+        <button onClick={handleSaveButton} className={`profile__button-save ${buttonSaveState}`}>Сохранить</button>
       </form>
       <button className={`profile__button-logout ${buttonExitState}`}>Выйти из аккаунта</button>
     </section>

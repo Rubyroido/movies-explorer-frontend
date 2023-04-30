@@ -18,6 +18,10 @@
   border-radius: 20px;
 }
 
+.filter-checkbox__label:hover {
+  cursor: pointer;
+}
+
 .filter-checkbox__label::after {
   content: '';
   position: absolute;
