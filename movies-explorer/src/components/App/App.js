@@ -34,7 +34,7 @@ function App() {
         <Route path="saved-movies" element={
           <>
             <Header />
-
+            <Movies />
             <Footer />
           </>
         } />

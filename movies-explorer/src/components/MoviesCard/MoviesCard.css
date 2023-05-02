@@ -38,6 +38,7 @@
   font-size: 10px;
   line-height: 9px;
   transition: all 0.1s;
+  cursor: pointer;
 }
 
 .movie-card__button-delete {
@@ -55,6 +56,25 @@
   background-repeat: no-repeat;
   background-position: center;
   transition: all 0.1s;
+  cursor: pointer;
+}
+
+.movie-card__button-remove {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  margin: 0;
+  padding: 0;
+  width: 21px;
+  height: 21px;
+  border: none;
+  background-color: #313131;
+  border-radius: 50%;
+  background-image: url(../../images/movie-card-button-remove.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.1s;
+  cursor: pointer;
 }
 
 .movie-card__button_invisible {
