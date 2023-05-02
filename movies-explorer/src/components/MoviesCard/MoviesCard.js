@@ -5,25 +5,49 @@ function MoviesCard(props) {
   const hours = Math.floor(props.duration / 60);
   const minutes = props.duration % 60;
 
-  // const [buttonSaveState, setButtonSaveState] = React.useState('');
-  // const [buttonDeleteState, setButtonDeleteState] = React.useState('movie-card__button_disabled');
+  const [buttonText, setButtonText] = React.useState('');
+  const [buttonClassName, setButtonClassName] = React.useState('');
+  const [buttonVisibility, setButtonVisibility] = React.useState('');
 
-  // function handleSaveButton() {
-  //   setButtonSaveState('movie-card__button_disabled');
-  //   setButtonDeleteState('');
-  // }
+  React.useEffect(() => {
+    if (props.saved === true) {
+      setButtonText('');
+      setButtonClassName('movie-card__button-delete')
+    } else {
+      setButtonText('Сохранить');
+      setButtonClassName('movie-card__button-save');
+      setButtonVisibility('movie-card__button_invisible');
+    }
+  }, []
+  )
 
-  // function handleDeleteButton() {
-  //   setButtonSaveState('');
-  //   setButtonDeleteState('movie-card__button_disabled');
-  // }
+  function handleButtonChange() {
+    if (buttonClassName === 'movie-card__button-delete') {
+      setButtonClassName('movie-card__button-save');
+      setButtonText('Сохранить');
+    } else {
+      setButtonText('');
+      setButtonClassName('movie-card__button-delete');
+    }
+  }
+
+  function handleMouseOver() {
+    if (buttonClassName === 'movie-card__button-save') {
+      setButtonVisibility('')
+    }
+  }
+
+  function handleMouseLeave() {
+    if (buttonClassName === 'movie-card__button-save') {
+      setButtonVisibility('movie-card__button_invisible')
+    }
+  }
 
   return (
     <div className='movie-card'>
-      <div className='movie-card__container'>
+      <div className='movie-card__container' onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
         <img src={props.url} alt='Постер' className='movie-card__image' />
-        {/* <button onClick={handleSaveButton} className={`movie-card__button-save ${buttonSaveState}`}>Сохранить</button>
-        <button onClick={handleDeleteButton} className={`movie-card__button-delete ${buttonDeleteState}`}/> */}
+        <button className={`${buttonClassName} ${buttonVisibility}`} onClick={handleButtonChange}>{buttonText}</button>
       </div>
       <div className='movie-card__description'>
         <p className='movie-card__name'>{props.name}</p>
