@@ -13,7 +13,7 @@ function EntryForm(props) {
               return (
                 <label className='entry__label'>
                   {input.label}
-                  <input id={input.id} type={input.type} name={input.name} className={'entry__input'}/>
+                  <input id={input.id} type={input.type} name={input.name} className={'entry__input'} required/>
                   <span className='entry__input-error'></span>
                 </label>
               )

@@ -47,10 +47,12 @@
   background-image: url('../../images/search-logo.svg');
   background-repeat: no-repeat;
   background-position: center;
+  transition: all 0.3s;
 }
 
 .search-form__button:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 
