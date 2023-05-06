@@ -33,15 +33,6 @@ function MoviesCardList() {
             })
           )
         }
-        {/* {
-          movies.map((movie) => {
-            return (
-              <li>
-                <MoviesCard duration={movie.duration} name={movie.name} url={movie.url} saved={movie.saved} />
-              </li>
-            )
-          })
-        } */}
       </ul>
       <button className='movies-card-list__button'>Ещё</button>
     </section>

@@ -64,12 +64,12 @@ function MoviesCard(props) {
         <img src={props.url} alt='Постер' className='movie-card__image' />
         {
           location.pathname === '/movies' && (
-            <button className={`${buttonClassName} ${buttonVisibility}`} onClick={handleButtonChange}>{buttonText}</button>
+            <button className={`movie-card__button ${buttonClassName} ${buttonVisibility}`} onClick={handleButtonChange}>{buttonText}</button>
           )
         }
         {
           location.pathname === '/saved-movies' && (
-            <button className={`movie-card__button-remove ${buttonVisibility}`}></button>
+            <button className={`movie-card__button movie-card__button-remove ${buttonVisibility}`}></button>
           )
         }
       </div>
