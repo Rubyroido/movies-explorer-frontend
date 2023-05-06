@@ -30,7 +30,7 @@ function Register() {
     <section className="register">
       <EntryForm title={title} inputs={inputs} buttonText={buttonText} />
       <p className='register__text'>Уже зарегистрированы?
-        <Link to='/signin' className='register__link'> Регистрация</Link>
+        <Link to='/signin' className='register__link'> Войти</Link>
       </p>
     </section>
   )

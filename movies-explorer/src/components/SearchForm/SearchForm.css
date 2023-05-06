@@ -22,7 +22,6 @@
 
 .search-form__input {
   max-width: 1086px;
-  width: 88vw;
   background-color: #2F2F2F;
   margin: 0;
   padding: 16px 20px;
@@ -34,6 +33,7 @@
   border-radius: 8px;
   outline: none;
   box-sizing: border-box;
+  flex: 1;
 }
 
 .search-form__button {
@@ -52,6 +52,7 @@
 .search-form__button:hover {
   cursor: pointer;
 }
+
 
 @media screen and (max-width: 550px) {
   .search-form {
