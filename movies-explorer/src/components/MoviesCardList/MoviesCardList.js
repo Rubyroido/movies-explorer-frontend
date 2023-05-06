@@ -9,7 +9,7 @@ function MoviesCardList() {
   console.log(savedFilms);
 
   return (
-    <section className='movies-card-list'>
+    <div className='movies-card-list'>
       <ul className='movies-card-list__cards'>
         {
           location.pathname === '/movies' && (
@@ -35,7 +35,7 @@ function MoviesCardList() {
         }
       </ul>
       <button className='movies-card-list__button'>Ещё</button>
-    </section>
+    </div>
   )
 }
 

@@ -13,7 +13,7 @@ import NotFound from '../NotFound/NotFound';
 
 function App() {
   return (
-    <page className="app">
+    <div className="app">
       <Routes>
         <Route path="/" exact element={
           <>
@@ -52,7 +52,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </page>
+    </div>
   );
 }
 

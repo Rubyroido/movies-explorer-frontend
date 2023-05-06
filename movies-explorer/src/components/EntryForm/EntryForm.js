@@ -14,7 +14,7 @@ function EntryForm(props) {
                 <label className='entry__label'>
                   {input.label}
                   <input id={input.id} type={input.type} name={input.name} className={'entry__input'}/>
-                  <p className='entry__input-error'></p>
+                  <span className='entry__input-error'></span>
                 </label>
               )
             })
