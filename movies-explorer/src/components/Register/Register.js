@@ -27,9 +27,9 @@ function Register() {
   const buttonText = 'Зарегистрироваться';
 
   return (
-    <section className="login">
+    <section className="register">
       <EntryForm title={title} inputs={inputs} buttonText={buttonText} />
-      <p className='login__text'>Уже зарегистрированы?
+      <p className='register__text'>Уже зарегистрированы?
         <Link to='/signin' className='register__link'> Регистрация</Link>
       </p>
     </section>

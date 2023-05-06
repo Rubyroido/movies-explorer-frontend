@@ -35,3 +35,21 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+@media screen and (max-width: 420px) {
+  .nav-tab {
+    font-size: 10px;
+    margin: 0 auto 17px;
+  }
+
+  .nav-tab__list {
+    gap: 6px;
+  }
+
+  .nav-tab__link {
+    padding-top: 5px;
+    width: 82px;
+    height: 26px;
+    border-radius: 6px;
+  }
+}

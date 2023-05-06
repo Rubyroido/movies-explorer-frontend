@@ -1,6 +1,6 @@
 .portfolio {
   max-width: 1140px;
-  width: 100vw;
+  width: 87vw;
   margin: 0 auto 125px;
   padding: 0;
   text-align: start;
@@ -62,4 +62,53 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+    max-width: 668px;
+    margin: 0 auto 90px;
+  }
+
+  .portfolio__title {
+    color: #A0A0A0;
+  }
+
+  .portfolio__project-name {
+    font-size: 28px;
+    letter-spacing: -0.04em;
+  }
+
+  .portfolio__project-link {
+    width: 27px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .portfolio {
+    width: 89vw;
+    margin: 0 auto 70px;
+  }
+
+  .portfolio__title {
+    font-size: 14px;
+  }
+
+  .portfolio__projects {
+    margin: 40px 0 0;
+  }
+
+  .portfolio__project {
+    height: 48px;
+  }
+
+  .portfolio__project-name {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .portfolio__project-link {
+    width: 18px;
+    height: 28px;
+  }
 }

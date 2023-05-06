@@ -109,3 +109,32 @@
 .profile__button_disabled {
   display: none;
 }
+
+@media screen and (max-width: 768px) {
+  .profile {
+    margin: 236px auto 269px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile {
+    max-width: 260px;
+    margin: 70px auto 40px;
+  }
+
+  .profile__form {
+    width: 100%;
+    margin: 80px auto 16px;
+    gap: 379px;
+  }
+
+  .profile__button-edit {
+    font-size: 12px;
+    line-height: 1.21;
+  }
+
+  .profile__button-logout {
+    font-size: 12px;
+    line-height: 1.21;
+  }
+}

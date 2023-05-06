@@ -1,0 +1,146 @@
+.navigation {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.navigation__authorization-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.navigation__signup {
+  color: white;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  transition: all 0.2s;
+}
+
+.navigation__signup:hover {
+  opacity: 0.8;
+}
+
+.navigation__signin {
+  color: black;
+  text-decoration: none;
+  width: 76px;
+  height: 32px;
+  background-color: #3DDC84;
+  border-radius: 3px;
+  align-self: center;
+  margin: 0;
+  padding: 8px 0 0;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.navigation__signin:hover {
+  opacity: 0.8;
+}
+
+.navigation__menu-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navigation__popup-overlay {
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  background: rgba(0, 0, 0, 0.6);
+  color: black;
+}
+
+.navigation__popup-overlay_close {
+  width: 100vw;
+}
+
+.navigation__popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100vh;
+  background-color: #202020;
+  z-index: 10;
+  transition: all 0.2s;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding-bottom: 95px;
+  box-sizing: border-box;
+}
+
+.navigation__popup_active {
+  width: 65vw;
+}
+
+.navigation__popup-button {
+  display: none;
+  border: none;
+  background-color: #202020;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 15;
+  cursor: pointer;
+}
+
+.navigation__popup-button_open {
+  background-image: url('../../images/navigation-button-open.svg');
+  width: 44px;
+  height: 44px;
+}
+
+.navigation__popup-button_close {
+  background-image: url('../../images/navigation-button-close.svg');
+  width: 22px;
+  height: 22px;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__menu-container>.burger {
+    display: none;
+  }
+
+  .navigation__popup-button {
+    display: block;
+  }
+
+  .navigation__popup-button_close {
+    position: fixed;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .navigation__popup_active {
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navigation__authorization-container {
+    gap: 14px;
+    font-size: 10px;
+  }
+
+  .navigation__signin {
+    width: 54px;
+    height: 26px;
+    padding: 5px 0 0;
+  }
+}
+
+
