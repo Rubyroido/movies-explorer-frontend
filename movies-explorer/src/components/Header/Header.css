@@ -1,0 +1,36 @@
+.header {
+  max-width: 1140px;
+  width: 92vw;
+  height: 74px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 44px;
+}
+
+.header__logo {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url(../../images/logo.svg);
+  width: 38px;
+  height: 38px;
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    max-width: 708px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header {
+    width: 91vw;
+  }
+}

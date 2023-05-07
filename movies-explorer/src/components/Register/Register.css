@@ -1,0 +1,57 @@
+.register {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 70px 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.register__text {
+  margin: 0;
+  padding: 0;
+  color: #8B8B8B;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.register__link {
+  margin: 0;
+  padding: 0;
+  color: #4285F4;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+}
+
+.register__link:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .register {
+    gap: 40px;
+    padding: 230px 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .register {
+    gap: 14px;
+    padding: 56px 0 0;
+  }
+
+  .register__text {
+    font-size: 12px;
+    line-height: 1.21;
+  }
+
+  .register__link {
+    font-size: 12px;
+    line-height: 1.21;
+  }
+}
