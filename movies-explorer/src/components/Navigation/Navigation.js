@@ -3,7 +3,7 @@ import Burger from '../Burger/Burger';
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
-function Navigation() {
+function Navigation({ isLoggedIn }) {
   const location = useLocation();
 
   const [buttonState, setButtonState] = useState('navigation__popup-button_open');
@@ -26,7 +26,7 @@ function Navigation() {
   return (
     <div className='navigation'>
       {
-        location.pathname === '/' ?
+        isLoggedIn === false ?
           <nav className='navigation__authorization-container'>
             <Link to={'/signup'} className='navigation__signup'>Регистрация</Link>
             <Link to={'/signin'} className='navigation__signin'>Войти</Link>
