@@ -3,7 +3,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { useState, useEffect } from 'react';
 
-function SavedMovies({ savedMovies, onDeleteMovie }) {
+function SavedMovies({ savedMovies, onDeleteMovie, setInfoToolTipOpened, setInfoToolTipMessage }) {
   const [isShortChecked, setIsShortChecked] = useState(false);
   const [initialMovies, setInitialMovies] = useState(savedMovies);
   const [searchResult, setSearchResult] = useState(initialMovies);
@@ -21,6 +21,10 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
         movie.nameEN.toLowerCase().includes(query.toLowerCase())
       )
     })
+    if(result.length === 0) {
+      setInfoToolTipOpened(true);
+      setInfoToolTipMessage('По вашему запросу ничего не найдено')
+    }
     setInitialMovies(result);
     setSearchResult(isShortChecked ? filterShortMovies(result) : result);
   }
@@ -39,8 +43,8 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
   }
 
   useEffect(() => {
-    setSearchResult(savedMovies)
-  }, [savedMovies])
+    setSearchResult(isShortChecked ? filterShortMovies(savedMovies) : savedMovies)
+  }, [savedMovies, isShortChecked])
 
   return (
     <div className='saved-movies'>

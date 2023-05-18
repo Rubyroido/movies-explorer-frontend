@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from './ProtectedRoute';
@@ -14,11 +14,16 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
+import Preloader from '../Preloader/Preloader';
+import InfoToolTip from '../InfoToolTip/InfoToolTip';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token') ? true : false);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [infoToolTipOpened, setInfoToolTipOpened] = useState(false);
+  const [infoToolTipMessage, setInfoToolTipMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -35,7 +40,7 @@ function App() {
           console.log(err);
         })
     }
-  }, [])
+  }, [isLoggedIn])
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
@@ -62,6 +67,8 @@ function App() {
       })
       .catch((err) => {
         setIsLoggedIn(false);
+        setInfoToolTipOpened(true)
+        setInfoToolTipMessage(err)
         console.log(err);
       })
   }
@@ -69,9 +76,11 @@ function App() {
   function onRegister({ name, email, password }) {
     mainApi.register(name, email, password)
       .then(() => {
-        onLogin({email, password})
+        onLogin({ email, password })
       })
       .catch((err) => {
+        setInfoToolTipOpened(true)
+        setInfoToolTipMessage(err)
         console.log(err);
       })
   }
@@ -89,6 +98,8 @@ function App() {
         setCurrentUser(data)
       })
       .catch((err) => {
+        setInfoToolTipOpened(true)
+        setInfoToolTipMessage(err)
         console.log(err);
       })
   }
@@ -99,6 +110,8 @@ function App() {
         setSavedMovies([data, ...savedMovies]);
       })
       .catch((err) => {
+        setInfoToolTipOpened(true)
+        setInfoToolTipMessage(err)
         console.log(err);
       })
   }
@@ -107,24 +120,33 @@ function App() {
     const savedMovie = savedMovies.find((m) => {
       return m.movieId === (movie.id || movie.movieId)
     })
-    const newSavedMovies = savedMovies.filter((m) => m.movieId !== movie.id)
+    const newSavedMovies = savedMovies.filter((m) => m.movieId !== (movie.id || movie.movieId))
 
     mainApi.deleteMovie(savedMovie._id)
       .then(() => {
         setSavedMovies(newSavedMovies);
       })
       .catch((err) => {
+        setInfoToolTipOpened(true)
+        setInfoToolTipMessage(err)
         console.log(err);
       })
+  }
+
+  function handleClose() {
+    setInfoToolTipOpened(false)
+    setInfoToolTipMessage('')
   }
 
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
+        <Preloader isLoading={isLoading} />
+        <InfoToolTip isOpen={infoToolTipOpened} message={infoToolTipMessage} onClose={handleClose} />
         <Routes>
           <Route path="/" exact element={
             <>
-              <Header isLoggedIn={isLoggedIn}/>
+              <Header isLoggedIn={isLoggedIn} />
               <Main />
               <Footer />
             </>
@@ -132,11 +154,14 @@ function App() {
 
           <Route path="movies" element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Header isLoggedIn={isLoggedIn}/>
+              <Header isLoggedIn={isLoggedIn} />
               <Movies
                 savedMovies={savedMovies}
                 onSaveMovie={handleSaveMovie}
                 onDeleteMovie={handleDeleteMovie}
+                setIsLoading={setIsLoading}
+                setInfoToolTipOpened={setInfoToolTipOpened}
+                setInfoToolTipMessage={setInfoToolTipMessage}
               />
               <Footer />
             </ProtectedRoute>
@@ -144,10 +169,12 @@ function App() {
 
           <Route path="saved-movies" element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Header isLoggedIn={isLoggedIn}/>
+              <Header isLoggedIn={isLoggedIn} />
               <SavedMovies
                 savedMovies={savedMovies}
                 onDeleteMovie={handleDeleteMovie}
+                setInfoToolTipOpened={setInfoToolTipOpened}
+                setInfoToolTipMessage={setInfoToolTipMessage}
               />
               <Footer />
             </ProtectedRoute>
@@ -155,7 +182,7 @@ function App() {
 
           <Route path="profile" element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Header isLoggedIn={isLoggedIn}/>
+              <Header isLoggedIn={isLoggedIn} />
               <Profile
                 onSignOut={onSignOut}
                 onUpdateUser={handleUpdateUser}

@@ -26,7 +26,7 @@ function SearchForm({ onSearch, isShort, handleShort }) {
   return (
     <div className='search-form'>
       <form className='search-form__container' onSubmit={handleSubmit}>
-        <input className='search-form__input' placeholder='Фильм' id='search-form__input' required
+        <input className='search-form__input' placeholder='Фильм' id='search-form__input'
           onChange={onInput}
           value={userQuery || ''}
         />

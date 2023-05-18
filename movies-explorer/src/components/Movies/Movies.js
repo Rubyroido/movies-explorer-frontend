@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import * as mainApi from '../../utils/MainApi';
 import getMovies from '../../utils/MovieApi';
 
-function Movies({ savedMovies, onSaveMovie, onDeleteMovie }) {
+function Movies({ savedMovies, onSaveMovie, onDeleteMovie, setIsLoading, setInfoToolTipOpened, setInfoToolTipMessage }) {
   const [allMovies, setAllMovies] = useState([]);
   const [initialMovies, setInitialMovies] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
@@ -26,7 +26,11 @@ function Movies({ savedMovies, onSaveMovie, onDeleteMovie }) {
     })
     setInitialMovies(result);
     setSearchResult(isShortChecked ? filterShortMovies(result) : result);
-    localStorage.setItem('foundMovies', JSON.stringify(result))
+    localStorage.setItem('foundMovies', JSON.stringify(result));
+    if(result.length === 0) {
+      setInfoToolTipOpened(true);
+      setInfoToolTipMessage('По вашему запросу ничего не найдено')
+    }
   }
 
   function handleShort() {
@@ -43,14 +47,20 @@ function Movies({ savedMovies, onSaveMovie, onDeleteMovie }) {
     localStorage.setItem('userQuery', inputData);
     localStorage.setItem('shortMovies', isShortChecked);
     if (allMovies.length === 0) {
+      setIsLoading(true);
       getMovies()
         .then((movies) => {
           setAllMovies(movies);
           handleFilter(inputData);
         })
         .catch((err) => {
-          console.log(err)
+          setInfoToolTipOpened(true);
+          setInfoToolTipMessage(err);
+          console.log(err);
         })
+        .finally(
+          setIsLoading(false)
+        )
     } else {
       handleFilter(inputData)
     }
