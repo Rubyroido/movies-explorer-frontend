@@ -48,7 +48,6 @@ function App() {
       mainApi.validate(token)
         .then(() => {
           setIsLoggedIn(true);
-          navigate('/movies');
         })
         .catch((err) => {
           setIsLoggedIn(false);

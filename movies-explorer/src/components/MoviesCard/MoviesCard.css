@@ -108,6 +108,12 @@
   border-radius: 3px;
 }
 
+@media screen and (max-width: 800px) {
+  .movie-card__button_invisible {
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: 550px) {
   .movie-card {
     margin: 0;

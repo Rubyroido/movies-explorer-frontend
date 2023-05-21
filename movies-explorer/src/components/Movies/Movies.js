@@ -6,7 +6,6 @@ import * as mainApi from '../../utils/MainApi';
 import getMovies from '../../utils/MovieApi';
 
 function Movies({ savedMovies, onSaveMovie, onDeleteMovie, setIsLoading, setInfoToolTipOpened, setInfoToolTipMessage }) {
-  const [allMovies, setAllMovies] = useState([]);
   const [initialMovies, setInitialMovies] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [isShortChecked, setIsShortChecked] = useState(false);
@@ -17,20 +16,24 @@ function Movies({ savedMovies, onSaveMovie, onDeleteMovie, setIsLoading, setInfo
     )
   }
 
-  function handleFilter(query) {
-    const result = allMovies.filter((movie) => {
+  function handleFilter(query, movies) {
+    const result = movies.filter((movie) => {
       return (
         movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
         movie.nameEN.toLowerCase().includes(query.toLowerCase())
       )
     })
-    setInitialMovies(result);
-    setSearchResult(isShortChecked ? filterShortMovies(result) : result);
-    localStorage.setItem('foundMovies', JSON.stringify(result));
-    if(result.length === 0) {
+
+    if (result.length === 0) {
       setInfoToolTipOpened(true);
       setInfoToolTipMessage('По вашему запросу ничего не найдено')
     }
+
+    localStorage.setItem('allMovies', JSON.stringify(movies));
+    localStorage.setItem('foundMovies', JSON.stringify(result));
+
+    setInitialMovies(result);
+    setSearchResult(isShortChecked ? filterShortMovies(result) : result);
   }
 
   function handleShort() {
@@ -46,12 +49,12 @@ function Movies({ savedMovies, onSaveMovie, onDeleteMovie, setIsLoading, setInfo
   function onSearchSubmit(inputData) {
     localStorage.setItem('userQuery', inputData);
     localStorage.setItem('shortMovies', isShortChecked);
-    if (allMovies.length === 0) {
+
+    if (!localStorage.getItem('allMovies')) {
       setIsLoading(true);
       getMovies()
         .then((movies) => {
-          setAllMovies(movies);
-          handleFilter(inputData);
+          handleFilter(inputData, movies);
         })
         .catch((err) => {
           setInfoToolTipOpened(true);
@@ -62,7 +65,8 @@ function Movies({ savedMovies, onSaveMovie, onDeleteMovie, setIsLoading, setInfo
           setIsLoading(false)
         )
     } else {
-      handleFilter(inputData)
+      const allMovies = JSON.parse(localStorage.getItem('allMovies'));
+      handleFilter(inputData, allMovies)
     }
   }
 

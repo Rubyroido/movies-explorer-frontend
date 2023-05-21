@@ -1,5 +1,6 @@
 .movies-card-list {
   max-width: 1140px;
+  min-height: 50%;
   width: 92vw;
   margin: 70px 0 0;
 }

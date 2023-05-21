@@ -28,7 +28,7 @@ function SearchForm({ onSearch, isShort, handleShort }) {
       <form className='search-form__container' onSubmit={handleSubmit}>
         <input className='search-form__input' placeholder='Фильм' id='search-form__input'
           onChange={onInput}
-          value={userQuery || ''}
+          value={userQuery}
         />
         <button className='search-form__button' type='submit' />
       </form>
