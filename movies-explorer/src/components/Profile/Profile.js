@@ -1,11 +1,12 @@
 import './Profile.css';
-import React, { useContext,useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import useForm from '../../hooks/useForm';
 
 function Profile({ onSignOut, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
   const { values, handleChange, resetForm, errors, isValid } = useForm();
+  const saveButtonIsValid = (!isValid || (values.name === currentUser.name && values.email === currentUser.email));
 
   const [buttonEditState, setButtonEditState] = useState('');
   const [buttonSaveState, setButtonSaveState] = useState('profile__button_disabled');
@@ -62,7 +63,10 @@ function Profile({ onSignOut, onUpdateUser }) {
           <span className='profile__input-error'>{errors.email}</span>
         </div>
         <button onClick={handleEditButton} className={`profile__button-edit ${buttonEditState}`}>Редактировать</button>
-        <button type='submit'  className={`profile__button-save ${buttonSaveState} ${!isValid && 'profile__button-save_inactive'}`} disabled={!isValid}>Сохранить</button>
+        <button type='submit' className={`profile__button-save ${buttonSaveState} ${saveButtonIsValid && 'profile__button-save_inactive'}`}
+          disabled={saveButtonIsValid?true:false}>
+          Сохранить
+        </button>
       </form>
       <button className={`profile__button-logout ${buttonExitState}`} onClick={onSignOut}>Выйти из аккаунта</button>
     </section>
