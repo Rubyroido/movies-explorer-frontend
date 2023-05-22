@@ -61,13 +61,13 @@ function App() {
       .then((data) => {
         if (data.token) {
           setIsLoggedIn(true);
-          navigate('/movies')
+          navigate('/movies');
         }
       })
       .catch((err) => {
         setIsLoggedIn(false);
-        setInfoToolTipOpened(true)
-        setInfoToolTipMessage(err)
+        setInfoToolTipOpened(true);
+        setInfoToolTipMessage(err);
         console.log(err);
       })
   }
@@ -94,11 +94,13 @@ function App() {
   function handleUpdateUser({ name, email }) {
     mainApi.updateProfile(name, email)
       .then((data) => {
-        setCurrentUser(data)
+        setInfoToolTipOpened(true);
+        setInfoToolTipMessage('Данные успешно изменены');
+        setCurrentUser(data);
       })
       .catch((err) => {
-        setInfoToolTipOpened(true)
-        setInfoToolTipMessage(err)
+        setInfoToolTipOpened(true);
+        setInfoToolTipMessage(err);
         console.log(err);
       })
   }
@@ -109,8 +111,8 @@ function App() {
         setSavedMovies([data, ...savedMovies]);
       })
       .catch((err) => {
-        setInfoToolTipOpened(true)
-        setInfoToolTipMessage(err)
+        setInfoToolTipOpened(true);
+        setInfoToolTipMessage(err);
         console.log(err);
       })
   }
@@ -126,15 +128,15 @@ function App() {
         setSavedMovies(newSavedMovies);
       })
       .catch((err) => {
-        setInfoToolTipOpened(true)
-        setInfoToolTipMessage(err)
+        setInfoToolTipOpened(true);
+        setInfoToolTipMessage(err);
         console.log(err);
       })
   }
 
   function handleClose() {
-    setInfoToolTipOpened(false)
-    setInfoToolTipMessage('')
+    setInfoToolTipOpened(false);
+    setInfoToolTipMessage('');
   }
 
   return (
