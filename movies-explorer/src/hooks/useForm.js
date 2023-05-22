@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import isEmail from 'validator/lib/isEmail';
 
 export default function useFormWithValidation() {
   const [values, setValues] = React.useState({});
@@ -9,8 +10,17 @@ export default function useFormWithValidation() {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    setValues({...values, [name]: value});
-    setErrors({...errors, [name]: target.validationMessage });
+
+    if (name === 'email') {
+      if (isEmail(value)) {
+        target.setCustomValidity('');
+      } else {
+        target.setCustomValidity('Введен неверный email');
+      }
+    }
+
+    setValues({ ...values, [name]: value });
+    setErrors({ ...errors, [name]: target.validationMessage });
     setIsValid(target.closest("form").checkValidity());
   };
 
