@@ -39,12 +39,14 @@ function SavedMovies({ savedMovies, onDeleteMovie, setInfoToolTipOpened, setInfo
   }
 
   function onSearchSubmit(inputData) {
-    handleFilter(inputData)
+    localStorage.setItem('saved-query', inputData);
+    handleFilter(inputData);
   }
 
   useEffect(() => {
-    setSearchResult(isShortChecked ? filterShortMovies(savedMovies) : savedMovies)
-  }, [savedMovies, isShortChecked])
+    const savedQuery = localStorage.getItem('saved-query');
+    handleFilter(savedQuery);
+  }, [savedMovies])
 
   return (
     <div className='saved-movies'>
