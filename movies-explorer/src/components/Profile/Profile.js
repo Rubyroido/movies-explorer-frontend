@@ -1,52 +1,74 @@
 import './Profile.css';
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import useForm from '../../hooks/useForm';
 
-function Profile() {
-  const testUser = {
-    email: 'test@mail.ru',
-    password: '123',
-    name: 'Тест'
-  };
+function Profile({ onSignOut, onUpdateUser }) {
+  const currentUser = useContext(CurrentUserContext);
+  const { values, handleChange, resetForm, errors, isValid } = useForm();
+  const saveButtonIsValid = (!isValid || (values.name === currentUser.name && values.email === currentUser.email));
 
-  const [buttonEditState, setButtonEditState] = React.useState('');
-  const [buttonSaveState, setButtonSaveState] = React.useState('profile__button_disabled');
-  const [buttonExitState, setButtonExitState] = React.useState('');
-  const [inputState, setInputState] = React.useState('disabled')
+  const [buttonEditState, setButtonEditState] = useState('');
+  const [buttonSaveState, setButtonSaveState] = useState('profile__button_disabled');
+  const [buttonExitState, setButtonExitState] = useState('');
+  const [inputState, setInputState] = useState('disabled')
 
-  function handleEditButton(event) {
-    event.preventDefault()
+  function handleEditButton(evt) {
+    evt.preventDefault()
     setButtonEditState('profile__button_disabled');
     setButtonSaveState('');
     setButtonExitState('profile__button_disabled');
     setInputState('');
   }
 
-  function handleSaveButton(event) {
-    event.preventDefault()
+  function handleSumbit(evt) {
+    evt.preventDefault();
+    onUpdateUser(values);
     setButtonEditState('');
     setButtonSaveState('profile__button_disabled');
     setButtonExitState('');
     setInputState('disabled');
   }
 
+  useEffect(() => {
+    if (currentUser) {
+      resetForm(currentUser);
+    }
+  }, [currentUser, resetForm]);
+
   return (
     <section className='profile'>
-      <h3 className='profile__greeting'>Привет, {testUser.name}!</h3>
-      <form className='profile__form'>
+      <h3 className='profile__greeting'>Привет, {currentUser.name}!</h3>
+      <form className='profile__form' onSubmit={handleSumbit} noValidate>
         <div className='profile__container'>
           <label className='profile__input-name'>
             Имя
-            <input type='text' defaultValue={testUser.name} className='profile__input' disabled={inputState} />
+            <input id='profile-name' type='text' name='name' className={`profile__input ${errors.name && 'profile__input_invalid'}`} required
+              disabled={inputState}
+              value={values.name || ''}
+              onChange={handleChange}
+              minLength='2'
+              maxLength='30'
+            />
           </label>
+          <span className='profile__input-error'>{errors.name}</span>
           <label className='profile__input-name'>
             E-mail
-            <input type='text' defaultValue={testUser.email} className='profile__input' disabled={inputState} />
+            <input id='profile-email' type='email' name='email' className={`profile__input ${errors.email && 'profile__input_invalid'}`} required
+              disabled={inputState}
+              value={values.email || ''}
+              onChange={handleChange}
+            />
           </label>
+          <span className='profile__input-error'>{errors.email}</span>
         </div>
         <button onClick={handleEditButton} className={`profile__button-edit ${buttonEditState}`}>Редактировать</button>
-        <button onClick={handleSaveButton} className={`profile__button-save ${buttonSaveState}`}>Сохранить</button>
+        <button type='submit' className={`profile__button-save ${buttonSaveState} ${saveButtonIsValid && 'profile__button-save_inactive'}`}
+          disabled={saveButtonIsValid?true:false}>
+          Сохранить
+        </button>
       </form>
-      <button className={`profile__button-logout ${buttonExitState}`}>Выйти из аккаунта</button>
+      <button className={`profile__button-logout ${buttonExitState}`} onClick={onSignOut}>Выйти из аккаунта</button>
     </section>
   )
 }
