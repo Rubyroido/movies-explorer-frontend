@@ -45,8 +45,15 @@ function SavedMovies({ savedMovies, onDeleteMovie, setInfoToolTipOpened, setInfo
 
   useEffect(() => {
     const savedQuery = localStorage.getItem('saved-query');
-    handleFilter(savedQuery);
-  }, [savedMovies])
+    const result = savedMovies.filter((movie) => {
+      return (
+        movie.nameRU.toLowerCase().includes(savedQuery.toLowerCase()) ||
+        movie.nameEN.toLowerCase().includes(savedQuery.toLowerCase())
+      )
+    })
+    setInitialMovies(result);
+    setSearchResult(isShortChecked ? filterShortMovies(result) : result);
+  }, [savedMovies, isShortChecked])
 
   return (
     <div className='saved-movies'>
